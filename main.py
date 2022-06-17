@@ -68,4 +68,5 @@ while not done:
                     chance=1
                 print("Currently chosen Column by Player",chance,"is:",colChosen)   
     pygame.display.flip() 
-
+    
+print(34)
