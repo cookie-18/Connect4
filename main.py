@@ -82,7 +82,7 @@ def check(matrix, row, col):
         
     return 0
 
-def startGame():
+def startGame(cand1,cand2):
     screen = pygame.display.set_mode((700,600))  
     done = False  
 
@@ -142,7 +142,8 @@ def startGame():
                         
                         ans = check(matrix, row, col)
                         if ans == 1:
-                            s="Player 1 Won!"
+                            s=cand1
+                            s+=" Won!"
                             done = True
                         chance=2
                         print("Currently chosen Column by Player",chance,"is:",colChosen)    
@@ -182,7 +183,8 @@ def startGame():
                         
                         ans=check(matrix, row, col)
                         if ans == 1:
-                            s="Player 2 Won!"
+                            s=cand2
+                            s+=" Won!"
                             done = True
                         chance=1
                     print("Currently chosen Column by Player",chance,"is:",colChosen)   
@@ -194,6 +196,8 @@ mainScreen = pygame.display.set_mode((700,600))
 
 input_box1 = pygame.Rect(250, 100, 140, 32)
 input_box2 = pygame.Rect(250, 175, 140, 32)
+
+play_box = pygame.Rect(300,275,100,50)
 
 col_box1 = pygame.Rect(450, 100, 32, 32)
 col_box2 = pygame.Rect(450, 175, 32, 32)
@@ -215,6 +219,8 @@ while not active:
             elif(input_box2.collidepoint(event.pos)):
                 input2Entered = True
                 input1Entered = False
+            elif(play_box.collidepoint(event.pos)):
+                startGame(txt1,txt2)
             else:
                 input1Entered = False
                 input2Entered = False
@@ -242,14 +248,17 @@ while not active:
     head2_surf = font.render("Player 2: ",True,'white')
     txt1_surface = font.render(txt1, True, 'white')
     txt2_surface = font.render(txt2, True, 'white')
+    play_surf = font.render("PLAY",True,'white')
     mainScreen.blit(head1_surf, (input_box1.x-125, input_box1.y+5))
     mainScreen.blit(txt1_surface, (input_box1.x+5, input_box1.y+5))
     mainScreen.blit(head2_surf, (input_box2.x-125, input_box2.y+5))
     mainScreen.blit(txt2_surface, (input_box2.x+5, input_box2.y+5))
+    mainScreen.blit(play_surf, (play_box.x+22, play_box.y+15))
     pygame.draw.rect(mainScreen, 'white', input_box1, 2)
     pygame.draw.rect(mainScreen, 'white', input_box2, 2)
     pygame.draw.rect(mainScreen,'red',col_box1)
     pygame.draw.rect(mainScreen,'yellow',col_box2)
+    pygame.draw.rect(mainScreen,'white',play_box,2)
 
     pygame.display.flip()      
             
