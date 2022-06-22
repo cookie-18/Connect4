@@ -1,14 +1,9 @@
+from turtle import done
 import pygame
 import numpy as np
+import pyautogui
 
 pygame.init()
-screen = pygame.display.set_mode((700,600))  
-done = False  
-
-xcoord=[50,150,250,350,450,550,650]
-ycoord=[50,150,250,350,450,550]
-
-matrix = np.zeros(shape=(6,7), dtype=int)
 
 def check(matrix, row, col):
     
@@ -87,94 +82,174 @@ def check(matrix, row, col):
         
     return 0
 
-for i in xcoord:
-    for j in ycoord:
-        pygame.draw.circle(screen,(255,255,255),[i,j],35)
+def startGame():
+    screen = pygame.display.set_mode((700,600))  
+    done = False  
 
-colChosen=-1
-chance=1
-currHeight=[0]*7
-count=0
-while not done:
-    for event in pygame.event.get():  
-        if event.type == pygame.QUIT:  
-            done = True  
-        elif event.type==pygame.MOUSEBUTTONDOWN:
-            isPressed=pygame.mouse.get_pressed()[0]    
-            if(isPressed and chance==1):        
-                x,y=pygame.mouse.get_pos()
-                if(15<=x<=85):
-                    colChosen=0
-                elif(115<=x<=185):
-                    colChosen=1
-                elif(215<=x<=285):
-                    colChosen=2
-                elif(315<=x<=385):
-                    colChosen=3
-                elif(415<=x<=485):
-                    colChosen=4
-                elif(515<=x<=585):
-                    colChosen=5
-                elif(615<=x<=685):
-                    colChosen=6
-                if(currHeight[colChosen]<6):
-                    count+=1
-                    if(count==42):
-                        done=True
-                    currHeight[colChosen]+=1
-                    newx=xcoord[colChosen]
-                    newy=600-ycoord[currHeight[colChosen]-1]
-                    col = colChosen
-                    row = 6-currHeight[colChosen]
-                    matrix[row][col] = 1
-                    print(matrix)
-                    ans = check(matrix, row, col)
+    xcoord=[50,150,250,350,450,550,650]
+    ycoord=[50,150,250,350,450,550]
 
-                    if ans == 1:
-                        print(chance, "Player WON")
-                        done = True
+    matrix = np.zeros(shape=(6,7), dtype=int)
 
-                    pygame.draw.circle(screen,(255,0,0),[newx,newy],35)
-                    chance=2
-                print("Currently chosen Column by Player",chance,"is:",colChosen)    
-            elif(isPressed and chance==2):        
-                x,y=pygame.mouse.get_pos()
-                if(15<=x<=85):
-                    colChosen=0
-                elif(115<=x<=185):
-                    colChosen=1
-                elif(215<=x<=285):
-                    colChosen=2
-                elif(315<=x<=385):
-                    colChosen=3
-                elif(415<=x<=485):
-                    colChosen=4
-                elif(515<=x<=585):
-                    colChosen=5
-                elif(615<=x<=685):
-                    colChosen=6
-                if(currHeight[colChosen]<6):
-                    count+=1
-                    if(count==42):
-                        done=True
-                    currHeight[colChosen]+=1
-                    newx=xcoord[colChosen]
-                    newy=600-ycoord[currHeight[colChosen]-1]
-                    col = colChosen
-                    row = 6-currHeight[colChosen]
-                    matrix[row][col] = 2
-                    print(matrix)
-                    ans=check(matrix, row, col)
-                    print(ans)
-                    if ans == 1:
-                        print(chance, "Player WON")
-                        done = True
+    for i in xcoord:
+        for j in ycoord:
+            pygame.draw.circle(screen,(255,255,255),[i,j],35)
 
-                    pygame.draw.circle(screen,(255,255,0),[newx,newy],35)
-                    chance=1
-                print("Currently chosen Column by Player",chance,"is:",colChosen)   
-    pygame.display.flip() 
+    colChosen=-1
+    chance=1
+    currHeight=[0]*7
+    count=0
+    s=""
 
+    while not done:
+        for event in pygame.event.get():  
+            if event.type == pygame.QUIT:  
+                done = True  
+            elif event.type==pygame.MOUSEBUTTONDOWN:
+                isPressed=pygame.mouse.get_pressed()[0]    
+                if(isPressed and chance==1):        
+                    x,y=pygame.mouse.get_pos()
+                    if(15<=x<=85):
+                        colChosen=0
+                    elif(115<=x<=185):
+                        colChosen=1
+                    elif(215<=x<=285):
+                        colChosen=2
+                    elif(315<=x<=385):
+                        colChosen=3
+                    elif(415<=x<=485):
+                        colChosen=4
+                    elif(515<=x<=585):
+                        colChosen=5
+                    elif(615<=x<=685):
+                        colChosen=6
+                    else:
+                        colChosen=-1
+                    if(colChosen!=-1 and currHeight[colChosen]<6):
+                        count+=1
+                        if(count==42):
+                            s="Game Over! It's a Draw!"
+                            done=True
+                        currHeight[colChosen]+=1
+                        newx=xcoord[colChosen]
+                        newy=600-ycoord[currHeight[colChosen]-1]
+                        col = colChosen
+                        row = 6-currHeight[colChosen]
+                        matrix[row][col] = 1
+                        print(matrix)
+
+                        pygame.draw.circle(screen,(255,0,0),[newx,newy],35)
+                        
+                        ans = check(matrix, row, col)
+                        if ans == 1:
+                            s="Player 1 Won!"
+                            done = True
+                        chance=2
+                        print("Currently chosen Column by Player",chance,"is:",colChosen)    
+                elif(isPressed and chance==2):        
+                    x,y=pygame.mouse.get_pos()
+                    if(15<=x<=85):
+                        colChosen=0
+                    elif(115<=x<=185):
+                        colChosen=1
+                    elif(215<=x<=285):
+                        colChosen=2
+                    elif(315<=x<=385):
+                        colChosen=3
+                    elif(415<=x<=485):
+                        colChosen=4
+                    elif(515<=x<=585):
+                        colChosen=5
+                    elif(615<=x<=685):
+                        colChosen=6
+                    else:
+                        colChosen=-1
+                    if(colChosen!=-1 and currHeight[colChosen]<6):
+                        count+=1
+                        if(count==42):
+                            s="Game Over! It's a Draw!"
+                            done=True
+                        currHeight[colChosen]+=1
+                        newx=xcoord[colChosen]
+                        newy=600-ycoord[currHeight[colChosen]-1]
+                        col = colChosen
+                        row = 6-currHeight[colChosen]
+                        matrix[row][col] = 2
+                        print(matrix)
+                        print(ans)
+
+                        pygame.draw.circle(screen,(255,255,0),[newx,newy],35)
+                        
+                        ans=check(matrix, row, col)
+                        if ans == 1:
+                            s="Player 2 Won!"
+                            done = True
+                        chance=1
+                    print("Currently chosen Column by Player",chance,"is:",colChosen)   
+        pygame.display.flip() 
+    pyautogui.alert(s)
     
-    
 
+mainScreen = pygame.display.set_mode((700,600))  
+
+input_box1 = pygame.Rect(250, 100, 140, 32)
+input_box2 = pygame.Rect(250, 175, 140, 32)
+
+col_box1 = pygame.Rect(450, 100, 32, 32)
+col_box2 = pygame.Rect(450, 175, 32, 32)
+
+active=False
+input1Entered=False
+input2Entered=False
+txt1='Player 1'
+txt2='Player 2'
+
+while not active:
+    for event in pygame.event.get():
+        if(event.type == pygame.QUIT):
+            active = True
+        if(event.type == pygame.MOUSEBUTTONDOWN):
+            if(input_box1.collidepoint(event.pos)):
+                input1Entered = True
+                input2Entered = False
+            elif(input_box2.collidepoint(event.pos)):
+                input2Entered = True
+                input1Entered = False
+            else:
+                input1Entered = False
+                input2Entered = False
+        if(event.type == pygame.KEYDOWN):
+            if(input1Entered):
+                if(event.key==pygame.K_RETURN):
+                    print(txt1)
+                    txt1='Player 1'
+                elif(event.key==pygame.K_BACKSPACE):
+                    txt1=txt1[:-1]
+                else:
+                    txt1+=event.unicode
+            if(input2Entered):
+                if(event.key==pygame.K_RETURN):
+                    print(txt2)
+                    txt2='Player 2'
+                elif(event.key==pygame.K_BACKSPACE):
+                    txt2=txt2[:-1]
+                else:
+                    txt2+=event.unicode
+
+    font = pygame.font.Font(None, 32)
+    mainScreen.fill((30, 30, 30))
+    head1_surf = font.render("Player 1: ",True,'white')
+    head2_surf = font.render("Player 2: ",True,'white')
+    txt1_surface = font.render(txt1, True, 'white')
+    txt2_surface = font.render(txt2, True, 'white')
+    mainScreen.blit(head1_surf, (input_box1.x-125, input_box1.y+5))
+    mainScreen.blit(txt1_surface, (input_box1.x+5, input_box1.y+5))
+    mainScreen.blit(head2_surf, (input_box2.x-125, input_box2.y+5))
+    mainScreen.blit(txt2_surface, (input_box2.x+5, input_box2.y+5))
+    pygame.draw.rect(mainScreen, 'white', input_box1, 2)
+    pygame.draw.rect(mainScreen, 'white', input_box2, 2)
+    pygame.draw.rect(mainScreen,'red',col_box1)
+    pygame.draw.rect(mainScreen,'yellow',col_box2)
+
+    pygame.display.flip()      
+            
