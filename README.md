@@ -1,11 +1,7 @@
 # Connect4
 
-<<<<<<< HEAD
-This is a computer game based on the 2-Player Connection Board Game 'Connect4', created using Python, Pygame and Pyautogui.
-=======
-This is a To-Do List creating website, made using Python, Flask, HTML, CSS, JScript and JQuery.
->>>>>>> 9ada5d106b0f136fd64276464ca552d2d8950836
 
+This is a computer game based on the 2-Player Connection Board Game 'Connect4', created using Python, Pygame and Pyautogui.
 
 ## How to install and Run
 Firstly setup a Virtual Environment by following the below steps:
@@ -25,8 +21,6 @@ pip install -r requirements.txt
 
 ```
 
-<<<<<<< HEAD
-
 
 ## How to use
 1. After you run the above mentioned commands, run the ```main.py``` file.
@@ -36,36 +30,14 @@ pip install -r requirements.txt
 5. Now you will be presented with the main game-play region, a screen representing the 6x7 board of acutal board-game.
 6. Both the players can move as per the rules of the game as mentioned here: .
 7. Now enjoy the game!
-=======
-So you can access in the local URL: _[localhost:5000](localhost:5000/)_
-
-
-## How to use
-1. After you run the above mentioned commands, go to the local host.
-2. There will be a text-box in the centre of the screen,where you have to enter your task and add it's deadline in the below 'Deadline' section.
-3. Once you enter both the things, click on the 'Add' button present on the screen. 
-4. Once a task has been added successfully, a pop-up will be shown to confirm the same; otherwise if there is any mistake in the entered information, an alert will be shown.
-5. A table (representing the To-Do List) will be present on the screen which will contain details of all the successfully-added tasks, along with a check-box for each task, to show it's status (If completed then checked, otherwise unchecked).
-6. Also, you will be able to see the most urgent tasks (deadline within 2 hours) with red background, then comparitively low priority tasks (dealdline within 2-6 hours) with yellow background, and least priority tasks with light-purple background.
-7. Once the deadline for a particular task is crossed, it will be removed from the To-Do List.
->>>>>>> 9ada5d106b0f136fd64276464ca552d2d8950836
 
 
 ## Libraries Used
 
-<<<<<<< HEAD
 * pygame == 2.1.2
 * numpy == 1.22.3
 * pyautogui == 0.9.53
 * Python==3.9.0
-=======
-* Python==3.9.0
-* Flask==2.1.2
-* Werkzeug==2.1.2
-* BootStrap
-* JQuery
-* JScript
->>>>>>> 9ada5d106b0f136fd64276464ca552d2d8950836
 
 
 ## Screen Shots
@@ -82,12 +54,3 @@ __Game Board__
 
 __Winning Situation__
 ![Winning Situation](project_assets/WinningSituation.jpg)
-=======
-![Home Page](project_assets/home_page.jpg)
-
-__Successful Addition__
-![Successful Addition](project_assets/Successful_Addition.jpg)
-
-__Unsuccessful Addition__
-![Unsuccessful Addition](project_assets/Unsuccessful_Addition.jpg)
->>>>>>> 9ada5d106b0f136fd64276464ca552d2d8950836
