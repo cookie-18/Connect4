@@ -136,7 +136,6 @@ def startGame(cand1,cand2):
                         col = colChosen
                         row = 6-currHeight[colChosen]
                         matrix[row][col] = 1
-                        print(matrix)
 
                         pygame.draw.circle(screen,(255,0,0),[newx,newy],35)
                         
@@ -146,7 +145,6 @@ def startGame(cand1,cand2):
                             s+=" Won!"
                             done = True
                         chance=2
-                        print("Currently chosen Column by Player",chance,"is:",colChosen)    
                 elif(isPressed and chance==2):        
                     x,y=pygame.mouse.get_pos()
                     if(15<=x<=85):
@@ -176,8 +174,6 @@ def startGame(cand1,cand2):
                         col = colChosen
                         row = 6-currHeight[colChosen]
                         matrix[row][col] = 2
-                        print(matrix)
-                        print(ans)
 
                         pygame.draw.circle(screen,(255,255,0),[newx,newy],35)
                         
@@ -187,7 +183,6 @@ def startGame(cand1,cand2):
                             s+=" Won!"
                             done = True
                         chance=1
-                    print("Currently chosen Column by Player",chance,"is:",colChosen)   
         pygame.display.flip() 
     pyautogui.alert(s)
     
@@ -226,8 +221,7 @@ while not active:
                 input2Entered = False
         if(event.type == pygame.KEYDOWN):
             if(input1Entered):
-                if(event.key==pygame.K_RETURN):
-                    print(txt1)
+                if(event.key==pygame.K_RETURN):                    
                     txt1='Player 1'
                 elif(event.key==pygame.K_BACKSPACE):
                     txt1=txt1[:-1]
@@ -235,7 +229,6 @@ while not active:
                     txt1+=event.unicode
             if(input2Entered):
                 if(event.key==pygame.K_RETURN):
-                    print(txt2)
                     txt2='Player 2'
                 elif(event.key==pygame.K_BACKSPACE):
                     txt2=txt2[:-1]
@@ -245,7 +238,7 @@ while not active:
     font = pygame.font.Font(None, 32)
     mainScreen.fill('white')
     pygame.display.set_caption('Connect4')
-    imagee = pygame.image.load(r'C:\Users\91941\Desktop\Connect4\con4.jpg')
+    imagee = pygame.image.load(r'con4.jpg')
     
     head1_surf = font.render("Player 1: ",True,'black')
     head2_surf = font.render("Player 2: ",True,'black')
