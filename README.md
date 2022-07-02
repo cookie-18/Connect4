@@ -43,7 +43,6 @@ pip install -r requirements.txt
 ## Screen Shots
 
 __Home Page__
-<<<<<<< HEAD
 ![Home Page](project_assets/homepage.jpg)
 
 __Names Entered__
