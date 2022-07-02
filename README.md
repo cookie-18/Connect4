@@ -28,7 +28,7 @@ pip install -r requirements.txt
 3. Once you enter the corresponding names (not mandatory to change the default names), you are all set to play the game.
 4. You can start the game by clicking on the ```PLAY``` button.
 5. Now you will be presented with the main game-play region, a screen representing the 6x7 board of acutal board-game.
-6. Both the players can move as per the rules of the game as mentioned here: .
+6. Both the players can move as per the rules of the game as mentioned here: https://www.gamesver.com/the-rules-of-connect-4-according-to-m-bradley-hasbro/.
 7. Now enjoy the game!
 
 
