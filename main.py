@@ -1,4 +1,3 @@
-from turtle import done
 import pygame
 import numpy as np
 import pyautogui
