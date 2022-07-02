@@ -43,13 +43,17 @@ pip install -r requirements.txt
 ## Screen Shots
 
 __Home Page__
+
 ![Home Page](project_assets/homepage.jpg)
 
 __Names Entered__
+
 ![Names Entered](project_assets/NamesEntered.jpg)
 
 __Game Board__
+
 ![Game Board](project_assets/GameBoard.jpg)
 
 __Winning Situation__
+
 ![Winning Situation](project_assets/WinningSituation.jpg)
